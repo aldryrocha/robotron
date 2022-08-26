@@ -1,6 +1,8 @@
 const controle = document.querySelectorAll('[data-controle]');
 const estatisticas = document.querySelectorAll('[data-estatistica]');
-console.log(estatisticas);
+const cor = document.querySelectorAll('[data-cor]');
+
+//console.log(color);
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -58,4 +60,13 @@ function atualizaEstatisticas(peca){
         console.log(elemento.textContent);
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica];
     })
+}
+cor.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) =>{
+        changeColorRobotron(evento.target.dataset.cor);
+    })
+})
+function changeColorRobotron(cor){
+    const image = document.querySelector('#robotron').src = `img/robotron-${cor}.png`;
+    //console.log(image);
 }
